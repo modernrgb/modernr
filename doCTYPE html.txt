@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarBuyerPros — Bid Like a Dealer. Buy Like a Pro.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f8fafc; /* slate-50 */
+      --panel:#ffffff;
+      --ink:#0f172a; /* slate-900 */
+      --muted:#475569; /* slate-600 */
+      --border:#e2e8f0; /* slate-200 */
+      --blue:#2563eb; /* blue-600 */
+      --blue-700:#1d4ed8; /* blue-700 */
+      --green:#10b981; /* emerald-500 */
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(to bottom,var(--bg),#fff,var(--bg));color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    /* Header */
+    .header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+    .header-inner{height:64px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{height:40px;width:auto}
+    nav{display:none;gap:24px}
+    .cta-bar{display:flex;gap:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:12px;border:1px solid transparent;background:var(--blue);color:#fff;font-weight:600}
+    .btn:hover{background:var(--blue-700)}
+    .btn-outline{background:transparent;border-color:#cbd5e1;color:#0f172a}
+    .btn-outline:hover{background:#f8fafc}
+    @media(min-width:768px){nav{display:flex}}
+
+    /* Sections */
+    section{padding:64px 0}
+    .section-title{font-size:32px;font-weight:800;text-align:center;margin:0}
+    .section-sub{color:var(--muted);text-align:center;margin:10px auto 0;max-width:680px}
+
+    /* Hero */
+    .hero{position:relative}
+    .hero-grid{display:grid;gap:40px;align-items:center}
+    @media(min-width:1024px){.hero-grid{grid-template-columns:1.05fr .95fr}}
+    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #bfdbfe;background:#eff6ff;color:#1d4ed8;border-radius:999px;padding:6px 10px;font-size:12px;margin-bottom:14px}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--blue)}
+    h1{font-size:40px;line-height:1.1;margin:0}
+    h1 span{color:var(--blue)}
+    .lead{margin-top:16px;color:#334155;font-size:18px;max-width:620px}
+    .hero-badges{margin-top:16px;display:flex;gap:16px;color:#475569;font-size:14px}
+    .badge{display:flex;align-items:center;gap:8px}
+    .badge .b{width:8px;height:8px;border-radius:50%;background:var(--green)}
+
+    .card{border:1px solid var(--border);background:var(--panel);border-radius:24px;box-shadow:0 10px 20px rgba(15,23,42,.04);padding:24px}
+    .portal{width:100%;aspect-ratio:16/9;border-radius:16px;background:#f1f5f9;display:grid;place-items:center;color:#64748b;font-size:14px}
+    ul.features{margin:20px 0 0;padding:0;list-style:none}
+    ul.features li{display:flex;gap:12px;align-items:flex-start;margin:10px 0;color:#334155}
+    ul.features svg{flex:0 0 auto;margin-top:2px}
+
+    /* Stats */
+    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    @media(min-width:768px){.stats{grid-template-columns:repeat(4,1fr)}}
+    .stat{background:#f8fafc;border:1px solid var(--border);border-radius:20px;padding:20px;text-align:center}
+    .stat .v{font-size:28px;font-weight:800}
+    .stat .l{color:#64748b;font-size:13px;margin-top:6px}
+
+    /* Value cards */
+    .grid3{display:grid;gap:16px}
+    @media(min-width:768px){.grid3{grid-template-columns:repeat(3,1fr)}}
+    .val{border:1px solid var(--border);border-radius:20px;background:#fff;padding:20px}
+    .val h3{margin:0 0 8px;font-size:18px}
+    .val p{margin:0;color:#475569}
+
+    /* Steps */
+    .steps{display:grid;gap:16px}
+    @media(min-width:768px){.steps{grid-template-columns:repeat(4,1fr)}}
+    .step{border:1px solid var(--border);border-radius:20px;background:#fff;padding:20px}
+    .num{width:32px;height:32px;border-radius:999px;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:800}
+    .compliance{margin-top:16px;border:1px solid #bfdbfe;background:#eff6ff;color:#1e3a8a;border-radius:16px;padding:12px 14px;font-size:14px}
+
+    /* Demo form */
+    .form{max-width:720px;margin:0 auto}
+    .form .row{display:grid;gap:12px}
+    @media(min-width:640px){.form .row{grid-template-columns:1fr 1fr}}
+    input,textarea{width:100%;padding:12px 14px;border:1px solid #cbd5e1;border-radius:12px;font:inherit}
+    textarea{min-height:120px}
+
+    /* Footer */
+    footer{padding:36px 0;color:#64748b;border-top:1px solid var(--border)}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="#home">
+        <img src="images/colored-logo.png" alt="CarBuyerPros Logo" />
+      </a>
+      <nav>
+        <a href="#how">How it Works</a>
+        <a href="#value">Why Us</a>
+        <a href="#stats">Stats</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="cta-bar">
+        <a href="#careers" class="btn btn-outline">Join our Team</a>
+        <a href="#book-demo" class="btn">Book a Demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill"><span class="dot"></span> Guided wholesale access</div>
+          <h1>Bid Like a Dealer. <span>Buy Like a Pro.</span></h1>
+          <p class="lead">
+            CarBuyerPros provides <strong>agent‑led access</strong> to online wholesale auto auctions—where over
+            <strong>9 million vehicles</strong> sell nationwide each year. With our licensed professionals guiding you step by step,
+            you can confidently participate in <strong>monitored</strong> auctions, virtually or in person.
+          </p>
+          <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn" href="#book-demo">Book a Demo</a>
+            <a class="btn btn-outline" href="#how">See how it works</a>
+          </div>
+          <div class="hero-badges">
+            <div class="badge"><span class="b"></span> Licensed</div>
+            <div class="badge"><span class="b"></span> Monitored</div>
+            <div class="badge"><span class="b"></span> Accessible</div>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <img src="images/transparent-logo.png" alt="CarBuyerPros Transparent Logo" style="display:block;margin:0 auto 16px;height:72px;width:auto"/>
+            <div class="portal">Agent‑Guided Auction Portal</div>
+            <ul class="features">
+              <li>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.5 7.5a1 1 0 0 1-1.414 0l-3-3A1 1 0 0 1 5.293 10.293L8.5 13.5l6.793-6.793a1 1 0 0 1 1.414 0Z"/></svg>
+                Access wholesale auctions through licensed professionals
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.5 7.5a1 1 0 0 1-1.414 0l-3-3A1 1 0 0 1 5.293 10.293L8.5 13.5l6.793-6.793a1 1 0 0 1 1.414 0Z"/></svg>
+                In‑person or virtual support at every step
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.5 7.5a1 1 0 0 1-1.414 0l-3-3A1 1 0 0 1 5.293 10.293L8.5 13.5l6.793-6.793a1 1 0 0 1 1.414 0Z"/></svg>
+                Agents monitor bidding and advise clients live
+              </li>
+            </ul>
+            <a class="btn" href="#book-demo" style="width:100%;margin-top:16px;background:#0f172a">Get a guided walkthrough</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section id="stats" style="background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="container">
+        <div class="stats">
+          <div class="stat"><div class="v">9M+</div><div class="l">Vehicles at wholesale auctions annually</div></div>
+          <div class="stat"><div class="v">$2k–$8k</div><div class="l">Typical retail savings range</div></div>
+          <div class="stat"><div class="v">50 states</div><div class="l">Markets covered nationwide</div></div>
+          <div class="stat"><div class="v">Multiple</div><div class="l">Auction sources</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Props -->
+    <section id="value">
+      <div class="container">
+        <h2 class="section-title">Why CarBuyerPros?</h2>
+        <p class="section-sub">We connect consumers directly to dealer‑level wholesale auctions—bringing transparency and savings to your car search.</p>
+        <div class="grid3" style="margin-top:28px">
+          <div class="val"><h3>Wholesale Access</h3><p>Bid at the same auctions dealers use. No retail markups—just competitive prices.</p></div>
+          <div class="val"><h3>Guided Bidding</h3><p>Simple, step‑by‑step support so you can bid with confidence and avoid surprises.</p></div>
+          <div class="val"><h3>End‑to‑End Help</h3><p>From fees and inspections to transport and title, we help you every step of the way.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it Works -->
+    <section id="how" style="background:linear-gradient(to bottom,#fff,var(--bg));border-top:1px solid var(--border)">
+      <div class="container">
+        <h2 class="section-title">How it Works (Agent‑Guided)</h2>
+        <p class="section-sub">Consumer participation happens <strong>through a licensed CarBuyerPros agent</strong>. Access is supervised—either virtually or in person—to keep you compliant and confident.</p>
+        <div class="steps" style="margin-top:28px">
+          <div class="step"><div class="num">1</div><h3>Book a Demo</h3><p>Meet your agent. We review goals, budget, and auction timelines, and show you how supervised access works.</p></div>
+          <div class="step"><div class="num">2</div><h3>Verify & Prepare</h3><p>Your agent helps with identity checks, funding options, and setting expectations for fees, inspections, and transport.</p></div>
+          <div class="step"><div class="num">3</div><h3>Agent‑Guided Access</h3><p>Join a monitored session (virtual screen‑share or in‑person). Your licensed agent advises you live while you browse and bid.</p></div>
+          <div class="step"><div class="num">4</div><h3>Win & Post‑Auction</h3><p>We help finalize payment, title, and shipping. Your agent stays with you through delivery and next steps.</p></div>
+        </div>
+        <div class="compliance"><strong>Compliance note:</strong> Auction access is <strong>only</strong> provided during a supervised session with a licensed professional. Logins are not shared for unsupervised use.</div>
+        <div style="text-align:center;margin-top:20px"><a class="btn" href="#book-demo">Book Your Demo</a></div>
+      </div>
+    </section>
+
+    <!-- Demo -->
+    <section id="book-demo" style="background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <div class="container">
+        <div class="card form">
+          <h2 class="section-title" style="text-align:left;margin-bottom:8px">Book a Demo</h2>
+          <p class="section-sub" style="text-align:left;margin:0 0 16px 0">Let our pros show you how to bid at wholesale auctions, step by step.</p>
+          <!-- Simple email-based form. Replace mailto with your address. For a real backend, use Formspree or any form service. -->
+          <form method="GET" action="mailto:info@carbuyerpros.com" onsubmit="return true">
+            <div class="row">
+              <input name="name" placeholder="Full name" required>
+              <input name="email" type="email" placeholder="Email" required>
+            </div>
+            <input name="phone" placeholder="Phone">
+            <textarea name="message" placeholder="What are you looking for? (budget, make/model, timeline)"></textarea>
+            <div style="display:flex;gap:12px;align-items:center;margin-top:8px">
+              <button class="btn" type="submit">Request Demo</button>
+              <a class="btn btn-outline" href="mailto:info@carbuyerpros.com?subject=Demo%20Request">Or email us</a>
+            </div>
+            <p style="color:#64748b;font-size:12px;margin-top:8px">By submitting, you agree to be contacted about your demo. No spam—ever.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Careers -->
+    <section id="careers">
+      <div class="container hero-grid">
+        <div>
+          <h2 class="section-title" style="text-align:left">Join Our Team</h2>
+          <p class="section-sub" style="text-align:left">We’re growing fast and looking for passionate people who want to transform the car‑buying experience.</p>
+          <ul class="features" style="margin-top:16px">
+            <li><svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.5 7.5a1 1 0 0 1-1.414 0l-3-3A1 1 0 0 1 5.293 10.293L8.5 13.5l6.793-6.793a1 1 0 0 1 1.414 0Z"/></svg> Operations & Auction Specialists</li>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.5 7.5a1 1 0 0 1-1.414 0l-3-3A1 1 0 0 1 5.293 10.293L8.5 13.5l6.793-6.793a1 1 0 0 1 1.414 0Z"/></svg> Customer Success & Sales</li>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M16.707 5.293a1 1 0 0 1 0 1.414l-7.5 7.5a1 1 0 0 1-1.414 0l-3-3A1 1 0 0 1 5.293 10.293L8.5 13.5l6.793-6.793a1 1 0 0 1 1.414 0Z"/></svg> Transport & Title Coordination</li>
+          </ul>
+          <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn btn-outline" href="careers.html">View Open Roles</a>
+            <a class="btn" href="mailto:careers@carbuyerpros.com">Introduce Yourself</a>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <div class="portal" style="aspect-ratio:4/3">Team Photo / Culture Collage</div>
+            <p style="margin:12px 0 0;color:#64748b;font-size:14px">We’re remote‑friendly with hubs in major metros. Competitive comp & benefits.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="background:#f8fafc;border-top:1px solid var(--border)">
+      <div class="container">
+        <h2 class="section-title">FAQs</h2>
+        <div class="grid3" style="margin-top:28px">
+          <div class="val"><h3>Do I need a dealer license?</h3><p>No. You participate through our program with supervised access provided by a licensed CarBuyerPros agent.</p></div>
+          <div class="val"><h3>Can I browse or bid on my own?</h3><p>Access is agent‑guided only. Sessions are monitored (virtual or in‑person) for compliance and to help you avoid costly mistakes.</p></div>
+          <div class="val"><h3>Who places the bids—me or the agent?</h3><p>You can place bids during a supervised session with live guidance. In some cases, the agent can bid on your behalf with written authorization, depending on auction rules.</p></div>
+          <div class="val"><h3>Is this virtual or in person?</h3><p>Either. We support secure screen‑share sessions or on‑site appointments. Your agent will recommend the best option.</p></div>
+          <div class="val"><h3>What fees should I expect?</h3><p>Auctions charge buyer fees that vary by price, location, and services. Your agent will provide a transparent estimate before you bid.</p></div>
+          <div class="val"><h3>Do you help with transport and title?</h3><p>Yes. We advise on inspections, shipping, paperwork, and title transfer so your post‑auction steps are smooth.</p></div>
+        </div>
+        <div style="text-align:center;margin-top:20px"><a class="btn" href="#book-demo" style="background:#0f172a">Book a Demo</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <p>© <span id="y"></span> CarBuyerPros. All rights reserved.</p>
+      <div style="display:flex;gap:18px"><a href="#book-demo">Book a Demo</a><a href="#">Terms</a><a href="#">Privacy</a></div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
